@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>JBlog</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
 
 </head>
 <body>
@@ -36,6 +37,7 @@
 			
 		</div>
 		
+		<!-- 메인 푸터 -->
 		<c:import url="/WEB-INF/views/includes/main-footer.jsp"></c:import>
 	
 	
