@@ -5,14 +5,24 @@
 	 	<a href="${pageContext.request.contextPath}/">
 			<img class="logo" src="/jblog/assets/image/logo.jpg">
 		</a>
-		<ul class="menu">
-			<!-- 로그인 전 메뉴 -->
-			<li><a href="${pageContext.request.contextPath}/user/loginForm">로그인</a></li>
-			<li><a href="${pageContext.request.contextPath}/user/joinForm">회원가입</a></li>
+	
+	<div id="main-header" class="clearfix">
+ 		<c:choose>
+ 			<c:when test="${empty sessionScope.authUser}">
+ 				<!-- 로그인 실패, 로그인 전 -->
+ 				<ul class="menu">
+	 				<li><a href="${pageContext.request.contextPath}/user/loginForm">로그인</a></li>
+					<li><a href="${pageContext.request.contextPath}/user/joinForm">회원가입</a></li>
+ 				</ul>
+ 			</c:when>
+ 			<c:otherwise>
+ 				<!-- 로그인 성공 -->
+ 				<ul class="menu">
+	 				<li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a></li>
+					<li><a href="">내블로그</a></li>	
+				</ul>
+ 			</c:otherwise>
  			
- 			<%--
-			<!-- 로그인 후 메뉴 -->
-			<li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a></li>
-			<li><a href="">내블로그</a></li>
- 			--%>
- 		</ul>
+ 		</c:choose>
+ 		
+ 	</div>
