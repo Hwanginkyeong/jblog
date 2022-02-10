@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jblog.dao.UserDao;
+import com.jblog.service.UserService;
 import com.jblog.vo.UserVo;
 
 @Controller
 public class UserController {
 	
 	@Autowired
-	UserDao userDao;
+	private UserService userService; 
 	
 	
 //로그인폼
@@ -33,7 +34,7 @@ public class UserController {
 			System.out.println("[UserController.login()");
 			System.out.println(userVo);
 			
-			UserVo authUser = userDao.selectUser(userVo);
+			UserVo authUser = userService.login(userVo);   
 			System.out.println(authUser);
 			
 			if(authUser !=null) {//로그인 성공 
