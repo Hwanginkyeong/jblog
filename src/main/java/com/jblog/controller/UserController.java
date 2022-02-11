@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.jblog.dao.UserDao;
 import com.jblog.service.UserService;
 import com.jblog.vo.UserVo;
 
@@ -64,6 +63,46 @@ public class UserController {
 			return "redirect:/";
 	
 		}
+		
+		
+//회원가입폼 
+		@RequestMapping(value ="/user/joinForm", method = {RequestMethod.GET, RequestMethod.POST})
+		public String joinForm(@ModelAttribute UserVo userVo, HttpSession session) {
+			System.out.println("[UserController.joinForm()");
+			
+			return "user/joinForm";
+		}
+
+
+//회원가입 
+		@RequestMapping(value ="/user/join", method = {RequestMethod.GET, RequestMethod.POST})
+		public String join(@ModelAttribute UserVo userVo, HttpSession session) {
+			System.out.println("[UserController.join()");
+			System.out.println(userVo);
+			
+			
+			
+			return "user/joinSuccess";
+			
+			
+			/*
+		
+			if(authUser !=null) {//로그인 성공 
+				System.out.println("로그인성공");
+				//세션에 저장
+				session.setAttribute("authUser", authUser);	
+				
+				//리다이렉트 메인
+				return "redirect:/";
+			}else { //로그인 실패 
+				System.out.println("로그인실패");
+				//리다이렉트 로그인폼 
+				return "redirect:/user/loginForm?result=fail";
+			}
+			*/
+		}
+		
+		
 		
 		
 		
